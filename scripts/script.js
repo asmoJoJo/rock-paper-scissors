@@ -13,6 +13,10 @@ let playerPlay = function() {
 let playRound = function(playerSelection = "", computerSelection = "")  {
     let win = `You win!! ${playerSelection} beats ${computerSelection}!!`
     let lose = `You lose!! ${playerSelection} gets beaten by ${computerSelection}!!`
+    if(playerSelection === computerSelection) {
+        console.log(`Whoops, that's a tie. You Both chose ${computerSelection}!!`);
+        return null;
+    }
     let hasPlayerWon = false;
 
     switch(playerSelection) {
@@ -44,7 +48,7 @@ function game() {
         if(choice === "Quit") break;
         let result = playRound(choice, computerPlay());
         if(result === "Player") playerScore++;
-        else computerScore++;
+        else if(result === "Computer") computerScore++;
         console.log(`Score[player - CPU]\t${playerScore} : ${computerScore}`);
     }
 
